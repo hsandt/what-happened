@@ -14,29 +14,67 @@
 			"name": "p8tool: build game",
 			"cmd":
 			[
-				"p8tool build --lua src/main.lua --gfx data/data.p8 --gff data/data.p8 --map data/data.p8 --sfx data/data.p8 --music data/data.p8 build/game.p8"
+				"./build.sh"
 			],
 			"shell": true,
 			"working_dir": "${project_path}",
+		},
+		{
+			"name": "p8tool: build and test game",
+			"cmd":
+			[
+				"./build.sh && gnome-terminal -x bash -c \"pico8 -run -x build/game.p8 | pico-test\""
+			],
+			"shell": true,
+			"working_dir": "${project_path}",
+			"target": "ansi_color_build",
+			"syntax": "Packages/ANSIescape/ANSI.tmLanguage"
 		},
 		{
 			"name": "p8tool: build and run game",
 			"cmd":
 			[
-				"p8tool build --lua src/main.lua --gfx data/data.p8 --gff data/data.p8 --map data/data.p8 --sfx data/data.p8 --music data/data.p8 build/game.p8 && pico8 -run build/game.p8"
+				"./build.sh && pico8 -run build/game.p8"
 			],
 			"shell": true,
 			"working_dir": "${project_path}",
 		},
 		{
-			"name": "p8tool: open data",
+			"name": "p8tool: edit data",
 			"cmd":
 			[
 				"pico8 -run data/data.p8"
 			],
 			"shell": true,
 			"working_dir": "${project_path}"
-		}
+		},
+		{
+			"name": "p8tool: test all",
+			"cmd":
+			[
+				"./test.sh all",
+			],
+			"shell": true,
+			"working_dir": "${project_path}",
+		},
+		{
+			"name": "p8tool: test main",
+			"cmd":
+			[
+				"./test.sh main",
+			],
+			"shell": true,
+			"working_dir": "${project_path}",
+		},
+		{
+			"name": "p8tool: test flow",
+			"cmd":
+			[
+				"./test.sh flow",
+			],
+			"shell": true,
+			"working_dir": "${project_path}",
+		},
 	],
 	"syntax_override": {
 		"\\.lua$": ["PICO-8", "PICO-8"]
