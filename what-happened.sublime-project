@@ -1,0 +1,44 @@
+{
+	"folders":
+	[
+		{
+			"path": "/home/wing/.lexaloffle/pico-8"
+		},
+		{
+			"path": "."
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name": "p8tool: build game",
+			"cmd":
+			[
+				"p8tool build --lua src/main.lua --gfx data/data.p8 --gff data/data.p8 --map data/data.p8 --sfx data/data.p8 --music data/data.p8 build/game.p8"
+			],
+			"shell": true,
+			"working_dir": "${project_path}",
+		},
+		{
+			"name": "p8tool: build and run game",
+			"cmd":
+			[
+				"p8tool build --lua src/main.lua --gfx data/data.p8 --gff data/data.p8 --map data/data.p8 --sfx data/data.p8 --music data/data.p8 build/game.p8 && pico8 -run build/game.p8"
+			],
+			"shell": true,
+			"working_dir": "${project_path}",
+		},
+		{
+			"name": "p8tool: open data",
+			"cmd":
+			[
+				"pico8 -run data/data.p8"
+			],
+			"shell": true,
+			"working_dir": "${project_path}"
+		}
+	],
+	"syntax_override": {
+		"\\.lua$": ["PICO-8", "PICO-8"]
+	}
+}
